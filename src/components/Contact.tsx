@@ -72,8 +72,8 @@ const Contact = () => {
             </h2>
             <div className="mb-8">
               <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="bg-gold/10 p-2 rounded-full mr-4">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                  <div className="bg-gold/10 p-2 rounded-full mb-2 sm:mb-0 sm:mr-4">
                     <FileText className="h-6 w-6 text-gold" />
                   </div>
                   <div>
@@ -84,8 +84,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-gold/10 p-2 rounded-full mr-4">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                  <div className="bg-gold/10 p-2 rounded-full mb-2 sm:mb-0 sm:mr-4">
                     <FileText className="h-6 w-6 text-gold" />
                   </div>
                   <div>
@@ -96,8 +96,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="bg-gold/10 p-2 rounded-full mr-4">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                  <div className="bg-gold/10 p-2 rounded-full mb-2 sm:mb-0 sm:mr-4">
                     <Calendar className="h-6 w-6 text-gold" />
                   </div>
                   <div>
