@@ -56,27 +56,29 @@ const Services = () => {
             Nossas <span className="text-gold">Áreas de Atuação</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Oferecemos soluções jurídicas especializadas em diversas áreas do direito, 
+            Oferecemos soluções jurídicas especializadas em diversas áreas do direito,
             sempre com foco na excelência e no melhor resultado para nossos clientes.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
             >
-              <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
-                {service.icon}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  {service.icon}
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-navy">
+                  {service.title}
+                </h3>
               </div>
-              <h3 className="font-serif text-2xl font-bold text-navy mb-4">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 mb-6" style={{height: '24%'}}>
+              <p className="text-gray-600 mb-6" style={{ height: '24%' }}>
                 {service.description}
               </p>
-              <ul className="mb-6 space-y-2" style={{height: '32%'}}>
+              <ul className="mb-6 space-y-2" style={{ height: '32%' }}>
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-gray-600">
                     <span className="w-2 h-2 bg-gold rounded-full mr-2"></span>
@@ -84,8 +86,8 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="border-gold text-gold hover:bg-gold/10 w-full group-hover:bg-gold/5 transition-colors"
                 onClick={() => handleWhatsAppClick(service.title)}
               >
