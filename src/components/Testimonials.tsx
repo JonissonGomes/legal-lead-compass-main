@@ -36,7 +36,7 @@ const testimonials = [
 
 const documents = [
   {
-    title: "Contratos",
+    title: "Revisão de Contratos",
     description: "Modelos de contratos personalizados e revisão de documentos jurídicos com linguagem clara e acessível.",
     features: [
       "Contratos de Prestação de Serviços",
@@ -84,30 +84,32 @@ const Testimonials = () => {
             Documentação <span className="text-gold">Simplificada</span>
           </h2>
           <p className={`${fontSize.body} text-gray-600 max-w-3xl mx-auto px-2`}>
-            Encontre modelos de documentos jurídicos e orientações para 
+            Encontre modelos de documentos jurídicos e orientações para
             suas demandas legais. Conteúdo atualizado e explicado de forma clara e objetiva.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-8">
           {documents.map((doc, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white p-3 sm:p-4 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
+              style={{ paddingBottom: '8%' }}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gold/10 rounded-full flex items-center justify-center mb-3 sm:mb-4 md:mb-6 group-hover:bg-gold/20 transition-colors">
-                {doc.icon}
+              <div className="flex items-center gap-3 mb-3 sm:mb-4 md:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  {doc.icon}
+                </div>
+                <h3 className={`font-serif ${fontSize.h4} font-bold text-navy`}>
+                  {doc.title}
+                </h3>
               </div>
-              
-              <h3 className={`font-serif ${fontSize.h3} font-bold text-navy mb-2 sm:mb-3 md:mb-4`}>
-                {doc.title}
-              </h3>
-              
-              <p className={`${fontSize.small} text-gray-600 mb-3 sm:mb-4 md:mb-6`}>
+
+              <p className={`${fontSize.small} text-gray-600 mb-3 sm:mb-4 md:mb-6`} style={{ height: '22%' }}>
                 {doc.description}
               </p>
 
-              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 mb-3 sm:mb-4 md:mb-6">
+              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 mb-3 sm:mb-4 md:mb-6" style={{ height: '42%' }}>
                 {doc.features.map((feature, i) => (
                   <li key={i} className={`flex items-center ${fontSize.small} text-gray-600`}>
                     <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gold mr-1.5 sm:mr-2" />
@@ -116,10 +118,11 @@ const Testimonials = () => {
                 ))}
               </ul>
 
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className={`border-gold text-gold hover:bg-gold/10 w-full group-hover:bg-gold/5 transition-colors ${fontSize.button} py-1.5 sm:py-2 md:py-3`}
                 onClick={() => window.open('https://wa.me/5581985058518?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20modelos%20de%20documentos%20jurídicos.', '_blank')}
+                style={{ marginTop: 4 }}
               >
                 <span>Acessar Documentos</span>
                 <ArrowRight className="ml-1.5 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-1 transition-transform" />
@@ -129,8 +132,8 @@ const Testimonials = () => {
         </div>
 
         <div className="mt-6 sm:mt-8 md:mt-12 text-center">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className={`border-gold text-gold hover:bg-gold/10 ${fontSize.button} py-1.5 sm:py-2 md:py-3`}
             onClick={() => window.open('https://wa.me/5581985058518?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20modelos%20de%20documentos%20jurídicos.', '_blank')}
           >
