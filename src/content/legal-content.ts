@@ -47,9 +47,9 @@ De acordo com a LGPD, você tem o direito de:
 ## 6. Contato
 Para exercer seus direitos ou tirar dúvidas sobre o tratamento de seus dados pessoais, entre em contato conosco através dos seguintes canais:
 
-Email: ${contactEmail}
-Telefone: ${contactPhone}
-Endereço: ${contactAddress}
+- Email: ${contactEmail}
+- Telefone: ${contactPhone}
+- Endereço: ${contactAddress}
 `;
 
 export const termsOfUse = `
@@ -100,7 +100,7 @@ Reservamos o direito de:
 ## 7. Contato
 Para dúvidas, sugestões ou reclamações, entre em contato conosco através dos seguintes canais:
 
-Email: ${contactEmail}
-Telefone: ${contactPhone}
-Endereço: ${contactAddress}
+- Email: ${contactEmail}
+- Telefone: ${contactPhone}
+- Endereço: ${contactAddress}
 `; 
