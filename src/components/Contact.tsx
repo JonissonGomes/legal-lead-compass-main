@@ -7,6 +7,8 @@ import { FileText, Calendar, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { validatePhone, validateEmail, validateName, sanitizeMessage, formatPhoneNumber, sanitizeInput, isFormReady } from "@/utils/validations";
 
+const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+
 const Contact = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +29,8 @@ const Contact = () => {
   const requiredFields = ['nome', 'email', 'telefone'];
   const isFormValid = isFormReady(formData, requiredFields);
 
+  const MAX_MENSAGEM_LENGTH = 200;
+
   // Data de expiração da oferta (7 dias à frente)
   const expiryDate = new Date();
   expiryDate.setDate(expiryDate.getDate() + 7);
@@ -38,7 +42,7 @@ const Contact = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === 'telefone') {
       // Remove caracteres não numéricos antes de formatar
       const numericValue = value.replace(/\D/g, '');
@@ -52,10 +56,15 @@ const Contact = () => {
       // Remove espaços do email
       const sanitizedValue = value.replace(/\s/g, '');
       setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    } else if (name === 'mensagem') {
+      // Limita o número de caracteres
+      if (value.length <= MAX_MENSAGEM_LENGTH) {
+        setFormData(prev => ({ ...prev, [name]: value }));
+      }
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
-    
+
     // Limpa o erro quando o usuário começa a digitar
     setErrors(prev => ({ ...prev, [name]: "" }));
   };
@@ -67,9 +76,15 @@ const Contact = () => {
     }));
   };
 
+  const handleWhatsAppClick = () => {
+    const whatsappMessage = "Olá, gostaria de agendar uma consulta gratuita sobre meus direitos.";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!isFormValid) {
       toast({
         title: "Erro",
@@ -90,6 +105,11 @@ const Contact = () => {
         email: sanitizeInput(formData.email),
         mensagem: sanitizeMessage(formData.mensagem),
       };
+
+      const whatsappMessage = `Olá, meu nome é ${sanitizedData.nome}.\n\nAssunto:\n${sanitizedData.mensagem}`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+      window.open(whatsappUrl, '_blank');
 
       toast({
         title: "Recebemos sua mensagem!",
@@ -154,7 +174,6 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   type="text"
-                  pattern="[a-zA-ZÀ-ÿ\s]+"
                   className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.nome ? 'border-red-500' : ''}`}
                 />
                 {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
@@ -167,7 +186,6 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.email ? 'border-red-500' : ''}`}
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -181,12 +199,10 @@ const Contact = () => {
                   required
                   type="tel"
                   inputMode="numeric"
-                  pattern="[0-9]*"
                   maxLength={15}
                   className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.telefone ? 'border-red-500' : ''}`}
-                  title="Digite um número de celular válido com DDD (ex: 11999999999)"
                 />
-                {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
+                {errors.telefone && <p className="text-red-500 text-sm mt-1">Por favor, preencha seu telefone.</p>}
               </div>
               <div>
                 <Textarea
@@ -194,8 +210,14 @@ const Contact = () => {
                   name="mensagem"
                   value={formData.mensagem}
                   onChange={handleChange}
+                  maxLength={MAX_MENSAGEM_LENGTH}
                   className={`min-h-[100px] border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.mensagem ? 'border-red-500' : ''}`}
                 />
+                <div className="flex justify-end mt-1">
+                  <span className="text-gray-500 text-xs">
+                    {formData.mensagem.length}/{MAX_MENSAGEM_LENGTH}
+                  </span>
+                </div>
                 {errors.mensagem && <p className="text-red-500 text-sm mt-1">{errors.mensagem}</p>}
               </div>
               <div className="flex items-start space-x-2">
