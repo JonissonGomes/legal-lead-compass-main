@@ -73,7 +73,7 @@ const FAQ = () => {
                   )}
                 </CollapsibleTrigger>
                 <CollapsibleContent className="p-4 pt-0 text-gray-600 border-t">
-                  <p>{faq.answer}</p>
+                  <p style={{ marginTop: '2%' }}>{faq.answer}</p>
                 </CollapsibleContent>
               </Collapsible>
             ))}
