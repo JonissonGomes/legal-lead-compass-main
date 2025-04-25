@@ -67,21 +67,21 @@ const Services = () => {
               key={index}
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+              <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   {service.icon}
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-navy">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-navy">
                   {service.title}
                 </h3>
               </div>
-              <p className="text-gray-600 mb-6" style={{ height: '24%' }}>
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base" style={{ height: '24%' }}>
                 {service.description}
               </p>
-              <ul className="mb-6 space-y-2" style={{ height: '32%' }}>
+              <ul className="mb-4 sm:mb-6 space-y-1 sm:space-y-2" style={{ height: '32%' }}>
                 {service.features.map((feature, i) => (
-                  <li key={i} className="flex items-center text-gray-600">
-                    <span className="w-2 h-2 bg-gold rounded-full mr-2"></span>
+                  <li key={i} className="flex items-center text-gray-600 text-sm sm:text-base">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gold rounded-full mr-2"></span>
                     {feature}
                   </li>
                 ))}
