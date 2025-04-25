@@ -1,6 +1,6 @@
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
-const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE;
-const contactAddress = process.env.NEXT_PUBLIC_CONTACT_ADDRESS;
+const contactEmail = import.meta.env.VITE_CONTACT_EMAIL;
+const contactPhone = import.meta.env.VITE_CONTACT_PHONE;
+const contactAddress = import.meta.env.VITE_CONTACT_ADDRESS;
 
 export const privacyPolicy = `
 # Política de Privacidade
@@ -45,11 +45,11 @@ De acordo com a LGPD, você tem o direito de:
 - Obter informações sobre o compartilhamento de dados
 
 ## 6. Contato
-Para exercer seus direitos ou esclarecer dúvidas sobre esta política, entre em contato:
+Para exercer seus direitos ou tirar dúvidas sobre o tratamento de seus dados pessoais, entre em contato conosco através dos seguintes canais:
 
-- E-mail: ${contactEmail}
-- Telefone: ${contactPhone}
-- Endereço: ${contactAddress}
+Email: ${contactEmail}
+Telefone: ${contactPhone}
+Endereço: ${contactAddress}
 `;
 
 export const termsOfUse = `
@@ -98,9 +98,9 @@ Reservamos o direito de:
 - Tornar as alterações imediatamente efetivas
 
 ## 7. Contato
-Para esclarecer dúvidas sobre estes termos, entre em contato:
+Para dúvidas, sugestões ou reclamações, entre em contato conosco através dos seguintes canais:
 
-- E-mail: ${contactEmail}
-- Telefone: ${contactPhone}
-- Endereço: ${contactAddress}
+Email: ${contactEmail}
+Telefone: ${contactPhone}
+Endereço: ${contactAddress}
 `; 
