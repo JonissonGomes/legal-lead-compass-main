@@ -75,10 +75,10 @@ const Services = () => {
                   {service.title}
                 </h3>
               </div>
-              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base" style={{ height: '26%', marginBottom: '10%' }}>
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base h-[130px] md:h-[100px]">
                 {service.description}
               </p>
-              <ul className="mb-4 sm:mb-6 space-y-1 sm:space-y-2" style={{ height: '32%' }}>
+              <ul className="mb-4 sm:mb-6 space-y-1 sm:space-y-2 h-[140px] md:h-[170px]">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-gray-600 text-sm sm:text-base">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gold rounded-full mr-2"></span>
