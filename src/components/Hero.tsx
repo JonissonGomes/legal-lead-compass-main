@@ -6,42 +6,125 @@ import { HeroImage } from "./Images";
 import { useToast } from "@/hooks/use-toast";
 import { MessageSquare, ArrowRight } from "lucide-react";
 import { useResponsiveFontSize } from "@/hooks/useResponsiveFontSize";
+import { validatePhone, validateEmail, validateName, sanitizeMessage, formatPhoneNumber, sanitizeInput, isFormReady } from "@/utils/validations";
+import { toast } from "sonner";
 
 const Hero = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
     telefone: "",
     email: "",
     descricao: ""
   });
-  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({
+    nome: "",
+    telefone: "",
+    email: "",
+    descricao: ""
+  });
   const fontSize = useResponsiveFontSize();
 
+  const requiredFields = ['nome', 'email', 'telefone'];
+  const isFormValid = isFormReady(formData, requiredFields);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    
+    if (name === 'telefone') {
+      // Remove caracteres não numéricos antes de formatar
+      const numericValue = value.replace(/\D/g, '');
+      const formattedValue = formatPhoneNumber(numericValue);
+      setFormData(prev => ({ ...prev, [name]: formattedValue }));
+    } else if (name === 'nome') {
+      // Remove caracteres não permitidos no nome
+      const sanitizedValue = value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    } else if (name === 'email') {
+      // Remove espaços do email
+      const sanitizedValue = value.replace(/\s/g, '');
+      setFormData(prev => ({ ...prev, [name]: sanitizedValue }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+    
+    // Limpa o erro quando o usuário começa a digitar
+    setErrors(prev => ({ ...prev, [name]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    const newErrors = {
+      nome: "",
+      telefone: "",
+      email: "",
+      descricao: ""
+    };
+
+    if (!validateName(formData.nome)) {
+      newErrors.nome = "Nome inválido. Deve conter pelo menos 2 caracteres e não pode conter números.";
+    }
+
+    if (!validatePhone(formData.telefone)) {
+      newErrors.telefone = "Telefone inválido. Digite um número com DDD.";
+    }
+
+    if (!validateEmail(formData.email)) {
+      newErrors.email = "E-mail inválido.";
+    }
+
+    if (formData.descricao.length < 10) {
+      newErrors.descricao = "A descrição deve ter pelo menos 10 caracteres.";
+    }
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error !== "");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     
-    setTimeout(() => {
+    if (!isFormValid) {
       toast({
-        title: "Recebemos sua solicitação!",
+        title: "Erro",
+        description: "Por favor, preencha todos os campos obrigatórios corretamente.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      
+      // Sanitiza os dados antes de enviar
+      const sanitizedData = {
+        nome: sanitizeInput(formData.nome),
+        telefone: formData.telefone.replace(/\D/g, ''),
+        email: sanitizeInput(formData.email),
+        descricao: sanitizeMessage(formData.descricao),
+      };
+
+      // Simula o envio dos dados
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const whatsappMessage = `Olá, meu nome é ${sanitizedData.nome}. ${sanitizedData.descricao}`;
+      const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+      
+      window.open(whatsappUrl, '_blank');
+      
+      toast({
+        title: "Mensagem enviada com sucesso!",
         description: "Entraremos em contato via WhatsApp em até 24 horas.",
       });
-      setLoading(false);
-      setFormData({
-        nome: "",
-        telefone: "",
-        email: "",
-        descricao: ""
+      setFormData({ nome: "", telefone: "", email: "", descricao: "" });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Tente novamente mais tarde.",
       });
-    }, 1500);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleWhatsAppClick = () => {
@@ -105,8 +188,11 @@ const Hero = () => {
                   value={formData.nome}
                   onChange={handleChange}
                   required
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm md:text-base`}
+                  type="text"
+                  pattern="[a-zA-ZÀ-ÿ\s]+"
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.nome ? 'border-red-500' : ''}`}
                 />
+                {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
               </div>
               <div>
                 <Input 
@@ -115,8 +201,13 @@ const Hero = () => {
                   value={formData.telefone}
                   onChange={handleChange}
                   required
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm md:text-base`}
+                  type="tel"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={15}
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.telefone ? 'border-red-500' : ''}`}
                 />
+                {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
               </div>
               <div>
                 <Input 
@@ -126,8 +217,10 @@ const Hero = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm md:text-base`}
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.email ? 'border-red-500' : ''}`}
                 />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
               <div>
                 <Textarea 
@@ -135,20 +228,16 @@ const Hero = () => {
                   name="descricao"
                   value={formData.descricao}
                   onChange={handleChange}
-                  className={`min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm md:text-base`}
+                  className={`min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.descricao ? 'border-red-500' : ''}`}
                 />
+                {errors.descricao && <p className="text-red-500 text-sm mt-1">{errors.descricao}</p>}
               </div>
               <Button 
-                type="submit" 
-                size="lg"
-                className={`w-full bg-gold hover:bg-gold/90 text-white font-medium ${fontSize.caption}`}
-                disabled={loading}
+                type="submit"
+                className="w-full bg-gold hover:bg-gold/90 text-white"
+                disabled={!isFormValid || isLoading}
               >
-                {loading ? "Enviando..." : (
-                  <>
-                    Enviar Mensagem <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
+                {isLoading ? "Enviando..." : "Enviar Mensagem"}
               </Button>
               <p className={`text-center text-white/60 ${fontSize.caption}`}>
                 Seus dados estão seguros. Veja nossa Política de Privacidade.
