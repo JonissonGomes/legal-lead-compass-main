@@ -190,7 +190,7 @@ const Hero = () => {
                   required
                   type="text"
                   pattern="[a-zA-ZÀ-ÿ\s]+"
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.nome ? 'border-red-500' : ''}`}
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm ${errors.nome ? 'border-red-500' : ''}`}
                 />
                 {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
               </div>
@@ -205,7 +205,7 @@ const Hero = () => {
                   inputMode="numeric"
                   pattern="[0-9]*"
                   maxLength={15}
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.telefone ? 'border-red-500' : ''}`}
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm ${errors.telefone ? 'border-red-500' : ''}`}
                 />
                 {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
               </div>
@@ -218,7 +218,7 @@ const Hero = () => {
                   onChange={handleChange}
                   required
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.email ? 'border-red-500' : ''}`}
+                  className={`bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm ${errors.email ? 'border-red-500' : ''}`}
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -228,7 +228,7 @@ const Hero = () => {
                   name="descricao"
                   value={formData.descricao}
                   onChange={handleChange}
-                  className={`min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/60 ${fontSize.body} ${errors.descricao ? 'border-red-500' : ''}`}
+                  className={`min-h-[100px] bg-white/10 border-white/20 text-white placeholder:text-white/60 text-xs sm:text-sm ${errors.descricao ? 'border-red-500' : ''}`}
                 />
                 {errors.descricao && <p className="text-red-500 text-sm mt-1">{errors.descricao}</p>}
               </div>

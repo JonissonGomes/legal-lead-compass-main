@@ -155,20 +155,20 @@ const Contact = () => {
                   required
                   type="text"
                   pattern="[a-zA-ZÀ-ÿ\s]+"
-                  className={`border-gray-300 ${errors.nome ? 'border-red-500' : ''}`}
+                  className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.nome ? 'border-red-500' : ''}`}
                 />
                 {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
               </div>
               <div>
                 <Input
                   type="email"
-                  placeholder="Email"
+                  placeholder="E-mail"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                  className={`border-gray-300 ${errors.email ? 'border-red-500' : ''}`}
+                  className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.email ? 'border-red-500' : ''}`}
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -183,18 +183,18 @@ const Contact = () => {
                   inputMode="numeric"
                   pattern="[0-9]*"
                   maxLength={15}
-                  className={`border-gray-300 ${errors.telefone ? 'border-red-500' : ''}`}
+                  className={`border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.telefone ? 'border-red-500' : ''}`}
                   title="Digite um número de celular válido com DDD (ex: 11999999999)"
                 />
                 {errors.telefone && <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>}
               </div>
               <div>
                 <Textarea
-                  placeholder="Descreva brevemente seu caso"
+                  placeholder="Descreva brevemente sua situação"
                   name="mensagem"
                   value={formData.mensagem}
                   onChange={handleChange}
-                  className={`min-h-[120px] border-gray-300 ${errors.mensagem ? 'border-red-500' : ''}`}
+                  className={`min-h-[100px] border-gray-300 placeholder:text-xs sm:placeholder:text-sm ${errors.mensagem ? 'border-red-500' : ''}`}
                 />
                 {errors.mensagem && <p className="text-red-500 text-sm mt-1">{errors.mensagem}</p>}
               </div>
