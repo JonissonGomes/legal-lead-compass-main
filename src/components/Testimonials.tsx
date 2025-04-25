@@ -83,7 +83,7 @@ const Testimonials = () => {
           <h2 className={`font-serif ${fontSize.h1} font-bold text-navy mb-3 sm:mb-4 md:mb-6`}>
             Documentação <span className="text-gold">Simplificada</span>
           </h2>
-          <p className={`${fontSize.body} text-gray-600 max-w-3xl mx-auto px-2`}>
+          <p className={`${fontSize.body} text-gray-600 max-w-3xl mx-auto px-2`} style={{ marginBottom: '8%' }}>
             Encontre modelos de documentos jurídicos e orientações para
             suas demandas legais. Conteúdo atualizado e explicado de forma clara e objetiva.
           </p>
