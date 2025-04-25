@@ -6,9 +6,9 @@ export const sanitizeInput = (input: string): string => {
 
 export const validatePhone = (phone: string): boolean => {
   // Remove todos os caracteres não numéricos
-  const cleanPhone = phone.replace(/\D/g, '');
-  // Verifica se tem 10 ou 11 dígitos (com DDD)
-  return cleanPhone.length >= 10 && cleanPhone.length <= 11;
+  const cleanedPhone = phone.replace(/\D/g, '');
+  // Verifica apenas se tem pelo menos 10 dígitos (DDD + número)
+  return cleanedPhone.length >= 10;
 };
 
 export const validateEmail = (email: string): boolean => {
@@ -32,10 +32,10 @@ export const sanitizeMessage = (message: string): string => {
 export const formatPhoneNumber = (phone: string): string => {
   // Remove todos os caracteres não numéricos
   const cleaned = phone.replace(/\D/g, '');
-  
+
   // Limita a 11 dígitos (máximo para celular brasileiro)
   const limited = cleaned.slice(0, 11);
-  
+
   // Aplica a máscara
   if (limited.length <= 2) {
     return limited;
@@ -58,26 +58,9 @@ export const validateRequiredFields = (formData: Record<string, any>, requiredFi
 };
 
 export const isFormReady = (formData: Record<string, any>, requiredFields: string[]): boolean => {
-  // Verifica se todos os campos obrigatórios estão preenchidos
-  if (!validateRequiredFields(formData, requiredFields)) {
-    return false;
-  }
-
-  // Validações específicas para cada campo
-  if (formData.nome && !validateName(formData.nome)) {
-    return false;
-  }
-
-  if (formData.email && !validateEmail(formData.email)) {
-    return false;
-  }
-
-  if (formData.telefone) {
-    const numericPhone = formData.telefone.replace(/\D/g, '');
-    if (numericPhone.length !== 11 || !validatePhone(formData.telefone)) {
-      return false;
-    }
-  }
-
-  return true;
+  // Verifica apenas se os campos obrigatórios estão preenchidos
+  return requiredFields.every(field => {
+    const value = formData[field];
+    return value && value.trim() !== '';
+  });
 }; 
