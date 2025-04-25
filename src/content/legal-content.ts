@@ -6,45 +6,33 @@ export const privacyPolicy = `
 # Política de Privacidade
 
 ## 1. Introdução
-Bem-vindo à Política de Privacidade do Pinheiro & Guimarães. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais.
+Bem-vindo à Política de Privacidade do Pinheiro & Guimarães. Esta política descreve como coletamos e utilizamos suas informações pessoais para contato.
 
 ## 2. Coleta de Informações
-Coletamos informações que você nos fornece diretamente, como:
+Coletamos apenas as informações necessárias para o contato inicial, como:
 
 - Nome completo
 - Endereço de e-mail
 - Número de telefone
 - Mensagens enviadas através do formulário de contato
-- Informações sobre seu caso jurídico
 
 ## 3. Uso das Informações
-Utilizamos suas informações para:
+Utilizamos suas informações exclusivamente para:
 
 - Responder suas solicitações e dúvidas
 - Agendar consultas e reuniões
-- Melhorar nossos serviços e atendimento
-- Enviar comunicações importantes sobre seu caso
-- Cumprir obrigações legais e regulatórias
+- Manter contato sobre seu caso
 
-## 4. Proteção de Dados
-Implementamos medidas de segurança robustas para proteger suas informações, incluindo:
-
-- Criptografia de dados sensíveis
-- Acesso restrito a informações pessoais
-- Monitoramento contínuo de segurança
-- Treinamento regular da equipe em proteção de dados
-
-## 5. Seus Direitos
+## 4. Seus Direitos
 De acordo com a LGPD, você tem o direito de:
 
 - Acessar suas informações pessoais
 - Corrigir dados incorretos ou desatualizados
 - Solicitar a exclusão de seus dados
 - Revogar consentimentos anteriormente dados
-- Solicitar a portabilidade de seus dados
-- Obter informações sobre o compartilhamento de dados
+- Obter informações sobre o uso de seus dados
 
-## 6. Contato
+## 5. Contato
 Para exercer seus direitos ou tirar dúvidas sobre o tratamento de seus dados pessoais, entre em contato conosco através dos seguintes canais:
 
 - Email: ${contactEmail}
