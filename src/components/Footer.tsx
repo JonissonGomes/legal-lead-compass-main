@@ -1,9 +1,8 @@
-
 import { Scale } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-navy text-white">
       <div className="container mx-auto px-4 py-12">
@@ -17,7 +16,7 @@ const Footer = () => {
               Soluções jurídicas personalizadas para seu negócio e necessidades pessoais.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-gold font-semibold mb-4">Links Rápidos</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
@@ -27,7 +26,7 @@ const Footer = () => {
               <li><a href="#faq" className="hover:text-gold transition-colors">FAQ</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-gold font-semibold mb-4">Contato</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
@@ -36,7 +35,7 @@ const Footer = () => {
               <li>Espinheiros, 1000, Recife - PE</li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-gold font-semibold mb-4">Certificações</h3>
             <div className="flex flex-wrap gap-4">
@@ -52,16 +51,15 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-400">
             © {currentYear} Pinheiro & Guimarães. Todos os direitos reservados.
           </p>
           <div className="mt-4 md:mt-0">
-            <ul className="flex space-x-4 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-gold transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">Cookies</a></li>
+            <ul className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+              <li><a href="#" className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors">Política de Privacidade</a></li>
+              <li><a href="#" className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors">Termos de Uso</a></li>
             </ul>
           </div>
         </div>
