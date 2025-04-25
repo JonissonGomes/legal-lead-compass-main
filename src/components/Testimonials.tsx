@@ -93,8 +93,7 @@ const Testimonials = () => {
           {documents.map((doc, index) => (
             <div
               key={index}
-              className="bg-white p-3 sm:p-4 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
-              style={{ paddingBottom: '8%' }}
+              className="bg-white p-3 sm:p-4 md:p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group h-[380px] md:h-[480px]"
             >
               <div className="flex items-center gap-3 mb-3 sm:mb-4 md:mb-6">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
@@ -105,11 +104,11 @@ const Testimonials = () => {
                 </h3>
               </div>
 
-              <p className="text-gray-600 mb-3 sm:mb-4 md:mb-6 text-sm sm:text-base" style={{ height: '22%' }}>
+              <p className="text-gray-600 mb-3 sm:mb-4 md:mb-6 text-sm sm:text-base h-[70px] md:h-[70px]">
                 {doc.description}
               </p>
 
-              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 mb-3 sm:mb-4 md:mb-6" style={{ height: '42%' }}>
+              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 mb-3 sm:mb-4 md:mb-6 h-[140px] md:h-[170px]">
                 {doc.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-gray-600 text-sm sm:text-base">
                     <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gold mr-1.5 sm:mr-2" />
