@@ -1,4 +1,6 @@
 import { Scale } from "lucide-react";
+import PrivacyTermsModal from "./PrivacyTermsModal";
+import { privacyPolicy, termsOfUse } from "@/content/legal-content";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -58,8 +60,28 @@ const Footer = () => {
           </p>
           <div className="mt-4 md:mt-0">
             <ul className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <li><a href="#" className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors">Política de Privacidade</a></li>
-              <li><a href="#" className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors">Termos de Uso</a></li>
+              <li>
+                <PrivacyTermsModal
+                  title="Política de Privacidade"
+                  content={privacyPolicy}
+                  trigger={
+                    <a className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors cursor-pointer">
+                      Política de Privacidade
+                    </a>
+                  }
+                />
+              </li>
+              <li>
+                <PrivacyTermsModal
+                  title="Termos de Uso"
+                  content={termsOfUse}
+                  trigger={
+                    <a className="block sm:inline text-xs sm:text-sm hover:text-gold transition-colors cursor-pointer">
+                      Termos de Uso
+                    </a>
+                  }
+                />
+              </li>
             </ul>
           </div>
         </div>
