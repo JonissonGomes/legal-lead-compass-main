@@ -27,7 +27,7 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="por-que-escolher" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="font-playfair text-3xl md:text-4xl font-bold text-center text-navy mb-4">
           Por Que Escolher Nosso Escritório
@@ -35,7 +35,7 @@ const Benefits = () => {
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
           Oferecemos soluções jurídicas personalizadas com foco em resultados e atendimento de excelência
         </p>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
             <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
