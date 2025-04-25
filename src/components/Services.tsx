@@ -55,7 +55,7 @@ const Services = () => {
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-6">
             Nossas <span className="text-gold">Áreas de Atuação</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto">
             Oferecemos soluções jurídicas especializadas em diversas áreas do direito,
             sempre com foco na excelência e no melhor resultado para nossos clientes.
           </p>
@@ -75,7 +75,7 @@ const Services = () => {
                   {service.title}
                 </h3>
               </div>
-              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base" style={{ height: '24%' }}>
+              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base" style={{ height: '26%', marginBottom: '10%' }}>
                 {service.description}
               </p>
               <ul className="mb-4 sm:mb-6 space-y-1 sm:space-y-2" style={{ height: '32%' }}>
