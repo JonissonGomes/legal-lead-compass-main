@@ -23,8 +23,8 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 shadow-md backdrop-blur-sm" : "bg-transparent"
-      }`}>
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      }`} style={{ height: '8%' }}>
+      <div className="container mx-auto px-4 h-14 flex items-center justify-between">
         <div className="flex items-center">
           <Scale className={`h-6 w-6 ${isScrolled ? 'text-navy' : 'text-gold'} mr-2`} />
           <div className={`font-serif text-2xl font-bold ${isScrolled ? 'text-navy' : 'text-white'
