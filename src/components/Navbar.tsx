@@ -47,10 +47,10 @@ const Navbar = () => {
             Serviços
           </a>
           <a
-            href="#contato"
+            href="#sobre"
             className={`${isScrolled ? 'text-navy' : 'text-white'} hover:text-gold transition-colors`}
           >
-            Contato
+            Sobre
           </a>
           <a
             href="#faq"
@@ -105,18 +105,18 @@ const Navbar = () => {
               Serviços
             </a>
             <a
+              href="#sobre"
+              className="block text-navy hover:text-gold transition-colors py-1.5 text-sm"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sobre
+            </a>
+            <a
               href="#faq"
               className="block text-navy hover:text-gold transition-colors py-1.5 text-sm"
               onClick={() => setIsMenuOpen(false)}
             >
               FAQ
-            </a>
-            <a
-              href="#contato"
-              className="block text-navy hover:text-gold transition-colors py-1.5 text-sm"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contato
             </a>
             <Button className="w-full bg-gold hover:bg-gold/90 text-white text-sm py-1.5">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="mr-1.5">
