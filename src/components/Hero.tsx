@@ -8,6 +8,8 @@ import { MessageSquare, ArrowRight } from "lucide-react";
 import { useResponsiveFontSize } from "@/hooks/useResponsiveFontSize";
 import { validatePhone, validateEmail, validateName, sanitizeMessage, formatPhoneNumber, sanitizeInput, isFormReady } from "@/utils/validations";
 import { toast } from "sonner";
+import PrivacyTermsModal from "./PrivacyTermsModal";
+import { privacyPolicy } from "@/content/legal-content";
 
 const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
 
@@ -254,7 +256,17 @@ const Hero = () => {
                 {isLoading ? "Enviando..." : "Enviar Mensagem"}
               </Button>
               <p className={`text-center text-white/60 ${fontSize.caption}`}>
-                Seus dados estão seguros. Veja nossa Política de Privacidade.
+                Seus dados estão seguros. Veja nossa{" "}
+                <PrivacyTermsModal
+                  title="Política de Privacidade"
+                  content={privacyPolicy}
+                  trigger={
+                    <button className="text-gold hover:underline">
+                      Política de Privacidade
+                    </button>
+                  }
+                />
+                .
               </p>
             </form>
           </div>
