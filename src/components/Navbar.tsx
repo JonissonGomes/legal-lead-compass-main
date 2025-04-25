@@ -26,9 +26,8 @@ const Navbar = () => {
       }`} style={{ height: '8%' }}>
       <div className="container mx-auto px-4 h-14 flex items-center justify-between">
         <div className="flex items-center">
-          <Scale className={`h-6 w-6 ${isScrolled ? 'text-navy' : 'text-gold'} mr-2`} />
-          <div className={`font-serif text-2xl font-bold ${isScrolled ? 'text-navy' : 'text-white'
-            }`} style={{ fontSize: '104%' }}>
+          <Scale className={`h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 ${isScrolled ? 'text-navy' : 'text-gold'} mr-2`} />
+          <div className={`font-serif font-bold ${isScrolled ? 'text-navy' : 'text-white'} text-base sm:text-2xl md:text-3xl`}>
             Pinheiro & Guimarães
           </div>
         </div>
