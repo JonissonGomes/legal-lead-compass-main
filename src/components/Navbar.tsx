@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href="#"
             className={`${isScrolled ? 'text-navy' : 'text-white'} hover:text-gold transition-colors`}
