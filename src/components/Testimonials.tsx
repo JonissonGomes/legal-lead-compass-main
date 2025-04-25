@@ -80,10 +80,10 @@ const Testimonials = () => {
     <section className="py-8 sm:py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="text-center mb-6 sm:mb-8 md:mb-16">
-          <h2 className={`font-serif ${fontSize.h1} font-bold text-navy mb-3 sm:mb-4 md:mb-6`}>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-3 sm:mb-4 md:mb-6">
             Documentação <span className="text-gold">Simplificada</span>
           </h2>
-          <p className={`${fontSize.body} text-gray-600 max-w-3xl mx-auto px-2`} style={{ marginBottom: '8%' }}>
+          <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto px-2" style={{ marginBottom: '8%' }}>
             Encontre modelos de documentos jurídicos e orientações para
             suas demandas legais. Conteúdo atualizado e explicado de forma clara e objetiva.
           </p>
@@ -100,18 +100,18 @@ const Testimonials = () => {
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
                   {doc.icon}
                 </div>
-                <h3 className={`font-serif ${fontSize.h4} font-bold text-navy`}>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-navy">
                   {doc.title}
                 </h3>
               </div>
 
-              <p className={`${fontSize.small} text-gray-600 mb-3 sm:mb-4 md:mb-6`} style={{ height: '22%' }}>
+              <p className="text-gray-600 mb-3 sm:mb-4 md:mb-6 text-sm sm:text-base" style={{ height: '22%' }}>
                 {doc.description}
               </p>
 
               <ul className="space-y-1.5 sm:space-y-2 md:space-y-3 mb-3 sm:mb-4 md:mb-6" style={{ height: '42%' }}>
                 {doc.features.map((feature, i) => (
-                  <li key={i} className={`flex items-center ${fontSize.small} text-gray-600`}>
+                  <li key={i} className="flex items-center text-gray-600 text-sm sm:text-base">
                     <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gold mr-1.5 sm:mr-2" />
                     {feature}
                   </li>
@@ -120,7 +120,7 @@ const Testimonials = () => {
 
               <Button
                 variant="outline"
-                className={`border-gold text-gold hover:bg-gold/10 w-full group-hover:bg-gold/5 transition-colors ${fontSize.button} py-1.5 sm:py-2 md:py-3`}
+                className="border-gold text-gold hover:bg-gold/10 w-full group-hover:bg-gold/5 transition-colors"
                 onClick={() => window.open('https://wa.me/5581985058518?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20modelos%20de%20documentos%20jurídicos.', '_blank')}
                 style={{ marginTop: 4 }}
               >
@@ -134,7 +134,7 @@ const Testimonials = () => {
         <div className="mt-6 sm:mt-8 md:mt-12 text-center">
           <Button
             variant="outline"
-            className={`border-gold text-gold hover:bg-gold/10 ${fontSize.button} py-1.5 sm:py-2 md:py-3`}
+            className="border-gold text-gold hover:bg-gold/10"
             onClick={() => window.open('https://wa.me/5581985058518?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20modelos%20de%20documentos%20jurídicos.', '_blank')}
           >
             Solicitar Documento Personalizado
