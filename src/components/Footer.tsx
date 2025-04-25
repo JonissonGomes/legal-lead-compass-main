@@ -7,6 +7,9 @@ import { privacyPolicy, termsOfUse } from "@/content/legal-content";
 const contactEmail = import.meta.env.VITE_CONTACT_EMAIL;
 const contactPhone = import.meta.env.VITE_CONTACT_PHONE;
 const contactAddress = import.meta.env.VITE_CONTACT_ADDRESS;
+const facebookUrl = import.meta.env.VITE_FACEBOOK_URL;
+const instagramUrl = import.meta.env.VITE_INSTAGRAM_URL;
+const linkedinUrl = import.meta.env.VITE_LINKEDIN_URL;
 
 const Footer = () => {
   const fontSize = useResponsiveFontSize();
@@ -87,7 +90,7 @@ const Footer = () => {
             <h3 className={`font-serif ${fontSize.h4} font-bold mb-4`}>Redes Sociais</h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href={facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold transition-colors"
@@ -95,7 +98,7 @@ const Footer = () => {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://instagram.com"
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold transition-colors"
@@ -103,7 +106,7 @@ const Footer = () => {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href={linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gold transition-colors"
